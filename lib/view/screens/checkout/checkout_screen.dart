@@ -80,6 +80,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       _paymentList.add('wallet_payment');
     }
 
+    if(Provider.of<SplashProvider>(context, listen: false).configModel!.noonPayment!) {
+      _paymentList.add('noon_payment');
+    }
+
     for (var method in Provider.of<SplashProvider>(context, listen: false).configModel!.activePaymentMethodList!) {
       if(!_paymentList.contains(method)) {
         _paymentList.add(method);
@@ -109,9 +113,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           if(deliveryCharge < configModel.deliveryManagement!.minShippingCharge!) {
             deliveryCharge = configModel.deliveryManagement!.minShippingCharge!;
           }
-
-
-
 
            if((!kmWiseCharge || order.distance == -1) ||
               (configModel.freeDeliveryStatus!

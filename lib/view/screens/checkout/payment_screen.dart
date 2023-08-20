@@ -39,6 +39,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
   void initState() {
     super.initState();
     selectedUrl = '${AppConstants.baseUrl}/payment-mobile?token=${widget.url}&&payment_method=${Provider.of<OrderProvider>(context, listen: false).paymentMethod}';
+    print('asjkgfkajhfgjha $selectedUrl');
     _initData();
   }
 

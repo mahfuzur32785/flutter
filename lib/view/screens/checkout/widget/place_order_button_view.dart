@@ -62,6 +62,7 @@ class _PlaceOrderButtonViewState extends State<PlaceOrderButtonView> {
       'cash_on_delivery',
       'offline_payment',
       'wallet_payment',
+      'noon_payment',
     ];
 
     return SizedBox(
@@ -127,7 +128,7 @@ class _PlaceOrderButtonViewState extends State<PlaceOrderButtonView> {
                         showCustomSnackBar(getTranslated('wallet_balance_is_insufficient', context)!);
 
                       } else{
-                        orderProvider.placeOrder( placeOrderBody, _callback);
+                        orderProvider.placeOrder(placeOrderBody, _callback);
                       }
                     }else{
                       showAnimatedDialog(context, OfflinePaymentDialog(

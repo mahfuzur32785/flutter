@@ -235,18 +235,24 @@ OrderProvider extends ChangeNotifier {
   }
 
   Future<void> placeOrder(PlaceOrderBody placeOrderBody, Function callback) async {
-    _isLoading = true;
-    notifyListeners();
-    ApiResponse apiResponse = await orderRepo!.placeOrder(placeOrderBody);
-    _isLoading = false;
-    if (apiResponse.response != null && apiResponse.response!.statusCode == 200) {
 
-      String? message = apiResponse.response!.data['message'];
-      String orderID = apiResponse.response!.data['order_id'].toString();
-      callback(true, message, orderID);
-      debugPrint('-------- Order placed successfully $orderID ----------');
-    } else {
-      callback(false, ApiChecker.getError(apiResponse).errors![0].message, '-1');
+    print('akjflsdhf ${placeOrderBody.paymentMethod}');
+    try{
+      _isLoading = true;
+      notifyListeners();
+      ApiResponse apiResponse = await orderRepo!.placeOrder(placeOrderBody);
+      _isLoading = false;
+      if (apiResponse.response != null && apiResponse.response!.statusCode == 200) {
+
+        String? message = apiResponse.response!.data['message'];
+        String orderID = apiResponse.response!.data['order_id'].toString();
+        callback(true, message, orderID);
+        debugPrint('-------- Order placed successfully $orderID ----------');
+      } else {
+        callback(false, ApiChecker.getError(apiResponse).errors![0].message, '-1');
+      }
+    }catch(e){
+      print('akjflsdhfff ${e.toString()}');
     }
     notifyListeners();
   }

@@ -42,6 +42,7 @@ class ConfigModel {
   CookiesManagement? _cookiesManagement;
   List<String>? _activePaymentMethodList;
   bool? _offlinePayment;
+  bool? _noonPayment;
   double? _freeDeliveryOverAmount;
   bool? _freeDeliveryStatus;
   bool? _isVatTexInclude;
@@ -61,8 +62,6 @@ class ConfigModel {
   bool? _refundPolicyStatus;
   bool? _cancellationPolicyStatus;
   int? _otpResendTime;
-
-
 
   ConfigModel(
       {String? ecommerceName,
@@ -104,6 +103,7 @@ class ConfigModel {
         CookiesManagement? cookiesManagement,
         List<String>? activePaymentMethodList,
         bool? offlinePayment,
+        bool? noonPayment,
         double? freeDeliveryOverAmount,
         bool? freeDeliveryStatus,
         bool? isVatTexInclude,
@@ -166,6 +166,7 @@ class ConfigModel {
     _cookiesManagement = cookiesManagement;
     _activePaymentMethodList = activePaymentMethodList;
     _offlinePayment = offlinePayment;
+    _noonPayment = noonPayment;
     _freeDeliveryOverAmount = freeDeliveryOverAmount;
     _maxOrderForCODAmount = maxOrderForCODAmount;
     _freeDeliveryStatus = freeDeliveryStatus;
@@ -228,6 +229,7 @@ class ConfigModel {
   CookiesManagement? get cookiesManagement => _cookiesManagement;
   List<String>? get activePaymentMethodList => _activePaymentMethodList;
   bool? get offlinePayment => _offlinePayment;
+  bool? get noonPayment => _noonPayment;
   double? get freeDeliveryOverAmount => _freeDeliveryOverAmount;
   bool? get freeDeliveryStatus => _freeDeliveryStatus;
   bool? get isVatTexInclude => _isVatTexInclude;
@@ -327,6 +329,7 @@ class ConfigModel {
       _activePaymentMethodList = json['active_payment_method_list'].cast<String>();
     }
     _offlinePayment = '${json['offline_payment']}' == 'true';
+    _noonPayment = '${json['noon_payment']}' == 'true';
     _freeDeliveryOverAmount = double.tryParse('${json['free_delivery_over_amount']}');
     _maxOrderForCODAmount = double.tryParse('${json['maximum_amount_for_cod_order']}');
     _maxAmountCodStatus = '${json['maximum_amount_for_cod_order_status']}'.contains('1');

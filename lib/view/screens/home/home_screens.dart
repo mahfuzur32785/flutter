@@ -163,9 +163,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                     child: FlashDealsView(isHomeScreen: true),
                                   ),
                                 ) : HomeItemView(productList: flashDealProvider.flashDealList)
-
-
-
                               ]);
                             }
                             ),

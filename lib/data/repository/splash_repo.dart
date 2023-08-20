@@ -45,8 +45,6 @@ class SplashRepo {
     sharedPreferences!.setBool(AppConstants.onBoardingSkip, false);
   }
 
-
-
   bool showIntro() {
     return sharedPreferences!.getBool(AppConstants.onBoardingSkip)?? true;
   }
